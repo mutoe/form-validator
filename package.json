@@ -1,0 +1,69 @@
+{
+  "name": "@mutoe/form-validator",
+  "author": "mutoe <imutoe@gmail.com>",
+  "version": "0.1.0",
+  "description": "A simple form validator cross frontend and backend.",
+  "keywords": [
+    "http-server",
+    "browser",
+    "validator"
+  ],
+  "homepage": "https://github.com/mutoe/form-validator",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mutoe/form-validator.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">= 14"
+  },
+  "type": "module",
+  "module": "./build/index.js",
+  "main": "./build/index.cjs",
+  "types": "./build/index.d.ts",
+  "files": [
+    "build"
+  ],
+  "exports": {
+    ".": {
+      "import": "./build/index.js",
+      "require": "./build/index.cjs"
+    }
+  },
+  "scripts": {
+    "prepare": "simple-git-hooks",
+    "test": "vitest run --coverage",
+    "build": "vite build && tsc -p tsconfig.build.json",
+    "type-check": "tsc --noEmit"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged",
+    "pre-push": "pnpm type-check && pnpm test"
+  },
+  "lint-staged": {
+    "*.{ts,js,json,snap}": "eslint --fix"
+  },
+  "devDependencies": {
+    "@mutoe/eslint-config-preset-ts": "^3.5.3",
+    "@types/node": "^20.5.1",
+    "eslint": "^8.47.0",
+    "lint-staged": "^14.0.0",
+    "simple-git-hooks": "^2.9.0",
+    "typescript": "^5.1.6",
+    "vite": "^4.4.9",
+    "vitest": "^0.34.2"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@mutoe/eslint-config-preset-ts"
+    ],
+    "rules": {
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-non-null-assertion": "off"
+    }
+  }
+}
