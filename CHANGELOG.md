@@ -1,4 +1,9 @@
-# Change Log
+# 0.1.0 (2023-08-23)
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+### Bug Fixes
+
+* type definition issue ([37a2843](https://github.com/mutoe/form-validator/commit/37a284362059c4493957386b29fa659e533c3a4d))
+
+
+

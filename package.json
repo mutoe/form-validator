@@ -1,7 +1,7 @@
 {
   "name": "@mutoe/form-validator",
   "author": "mutoe <imutoe@gmail.com>",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A simple form validator cross frontend and backend.",
   "keywords": [
     "http-server",
