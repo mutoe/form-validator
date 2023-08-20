@@ -37,7 +37,8 @@
     "prepare": "simple-git-hooks",
     "test": "vitest run --coverage",
     "build": "vite build && tsc -p tsconfig.build.json",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "preversion": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged",
@@ -50,6 +51,7 @@
     "@mutoe/eslint-config-preset-ts": "^3.5.3",
     "@types/node": "^20.5.1",
     "@vitest/coverage-v8": "^0.34.2",
+    "conventional-changelog-cli": "^3.0.0",
     "eslint": "^8.47.0",
     "lint-staged": "^14.0.0",
     "simple-git-hooks": "^2.9.0",
