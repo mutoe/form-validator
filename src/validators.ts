@@ -195,7 +195,7 @@ export const validateAnyField: Validator = (rule, value, formData) => {
 
 export type Rule = StringRule | NumberRule | DatetimeRule | ArrayRule | AnyRule
 
-export type ValidationSchema<K extends string | number | symbol = string> = Partial<Record<K, Rule>>
+export type ValidationSchema<F extends Record<keyof F, any>> = Partial<Record<keyof F, Rule>>
 
 export const validatorMap: Record<Required<Rule>['type'] | 'any', Validator> = {
   text: validateStringField,
@@ -234,7 +234,7 @@ export const errorMessageMap: Record<ErrorType, string> = {
   [ErrorType.LessThanMinimumArrayLength]: '{field} must be greater than {min} elements',
 }
 
-export type ValidateResult<T> = Partial<Record<keyof T, ErrorResult>>
+export type ValidateResult<F extends Record<keyof F, any>> = Partial<Record<keyof F, ErrorResult>>
 
 export function validateField (value: unknown, rule: Rule, formData?: Record<string, unknown>): ErrorResult {
   const validateFn = validatorMap[rule?.type ?? 'any']
@@ -245,9 +245,9 @@ export function validateField (value: unknown, rule: Rule, formData?: Record<str
   return errors
 }
 
-export function validateForm<T extends Record<string, unknown>> (data: T, validationSchema: ValidationSchema<keyof T | string>): ValidateResult<T> {
-  const errors: Partial<Record<keyof T, ErrorResult>> = {}
-  for (const [fieldName, rule] of Object.entries(validationSchema) as [keyof T, Rule][]) {
+export function validateForm<F extends Record<keyof F, unknown>> (data: F, validationSchema: ValidationSchema<F>): ValidateResult<F> {
+  const errors: Partial<Record<keyof F, ErrorResult>> = {}
+  for (const [fieldName, rule] of Object.entries(validationSchema) as [keyof F, Rule][]) {
     const fieldErrors = validateField(data[fieldName], rule, data)
     if (fieldErrors.length) errors[fieldName] = fieldErrors
   }

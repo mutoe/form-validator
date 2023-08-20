@@ -3,7 +3,7 @@
   "include": ["src"],
   "exclude": [
     "**/__test__",
-    "**/*.{spec,test}.*",
+    "**/*.spec.*",
   ],
   "compilerOptions": {
     "outDir": "build",
