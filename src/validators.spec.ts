@@ -1,4 +1,5 @@
-import { type ErrorResult, ErrorType, type Rule, validateAnyField, validateArrayField, validateDatetimeField, validateNumberField, validateStringField } from './validators'
+import { ErrorType } from 'src/error-type'
+import { type ErrorResult, type Rule, validateAnyField, validateArrayField, validateDatetimeField, validateNumberField, validateStringField } from './validators'
 
 /** [rule, value, expected] */
 type TestCase = [Rule, unknown, ErrorResult]
